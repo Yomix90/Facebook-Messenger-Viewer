@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messenger Viewer</title>
+    <link rel="icon" href="./assets/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Settings Section -->
+        <div class="settings">
+            <div class="title-row">
+                <div class="title-text">
+                    <strong>Settings</strong>
+                </div>
+            </div>
+
+            <div class="sub-container">
+                <small>Select Messenger Export (JSON/HTML)</small>
+                <input type="file" id="fileInput" accept=".json,.html">
+                <small>Select Media Folder</small>
+                <input type="file" id="mediaFolder" webkitdirectory directory>
+                <small id="tips">Used for local photos/videos.</small>
+            </div>
+
+            <!-- Stats Section -->
+            <div id="statsContainer" class="sub-container" style="display:none;">
+                <strong>Chat Statistics</strong>
+                <div class="stats-content"></div>
+            </div>
+
+            <!-- Display Options -->
+            <div class="options">
+                <div class="sub-container">
+                    <strong>Perspective</strong>
+                    <form id="radioForm" class="choiceForm"></form>
+                </div>
+
+                <div class="sub-container">
+                    <strong>Display Mode</strong>
+                    <div class="display-modes">
+                        <label class="mode-option">
+                            <input type="radio" name="displayMode" value="phone" checked>
+                            <span class="mode-icon">📱</span>
+                            <span>Phone</span>
+                        </label>
+                        <label class="mode-option">
+                            <input type="radio" name="displayMode" value="tablet">
+                            <span class="mode-icon">tablet</span>
+                            <span>Tablet</span>
+                        </label>
+                        <label class="mode-option">
+                            <input type="radio" name="displayMode" value="pc">
+                            <span class="mode-icon">💻</span>
+                            <span>PC</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="sub-container">
+                    <strong>Customization</strong>
+                    <form>
+                        <label class="menu-item">
+                            <span>Dark mode</span>
+                            <label class="switch">
+                                <input type="checkbox" id="darkModeToggle">
+                                <span class="slider"></span>
+                            </label>
+                        </label>
+                        <label class="menu-item">
+                            <span>Show my name</span>
+                            <label class="switch">
+                                <input type="checkbox" id="showMyName">
+                                <span class="slider"></span>
+                            </label>
+                        </label>
+                        <label class="menu-item">
+                            <span>Show their name</span>
+                            <label class="switch">
+                                <input type="checkbox" id="showTheirName" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </label>
+                        <label class="menu-item">
+                            <span>Show timestamps</span>
+                            <label class="switch">
+                                <input type="checkbox" id="showTime">
+                                <span class="slider"></span>
+                            </label>
+                        </label>
+                        <label class="menu-item">
+                            <span>Show reactions</span>
+                            <label class="switch">
+                                <input type="checkbox" id="showReacts" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </label>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer">
+                <small>© 2025 Yomix90 | <a href="https://github.com/Yomix90/Facebook-Messenger-Viewer" target="_blank">GitHub</a></small>
+            </div>
+        </div>
+
+        <!-- Main Chat Area -->
+        <div class="chat-area">
+            <div class="chat-container">
+                <div class="chat-header">
+                    <div id="threadName">Messenger Viewer</div>
+                </div>
+
+                <div class="search-container">
+                    <div class="search-box">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        <input type="search" id="searchInput" placeholder="Search messages...">
+                        <button id="clearSearchBtn" style="background:none; border:none; cursor:pointer; color:var(--muted); font-size:18px;">×</button>
+                        <button id="searchBtn" style="display:none;">Search</button>
+                    </div>
+                    <div id="searchProgress" class="search-progress" style="display:none; margin-top:10px; flex-direction:column; gap:4px;">
+                        <div class="bar" style="height:4px; background:#ddd; border-radius:2px; overflow:hidden;">
+                            <div class="fill" style="width:0%; height:100%; background:var(--accent);"></div>
+                        </div>
+                        <small class="progress-text" style="font-size:10px; color:var(--muted);"></small>
+                    </div>
+                    <div id="searchResults" class="search-results" style="display:none;"></div>
+                </div>
+
+                <div id="chat"></div>
+                <div id="loading">Load a file to start</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Trust Modal -->
+    <div id="trustModal" class="trust-modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="trust-backdrop"></div>
+        <div class="trust-card">
+            <h2>Local Privacy</h2>
+            <p>Your data stays on your computer. This tool processes everything locally in your browser.</p>
+            <label style="font-size: 13px; color: var(--muted); cursor: pointer;">
+                <input type="checkbox" id="dontShowAgain"> Don't show this again
+            </label>
+            <div class="trust-footer">
+                <button id="trustCloseAlt" class="btn btn-secondary">Close</button>
+                <button id="trustClose" class="btn btn-primary">Got it</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
