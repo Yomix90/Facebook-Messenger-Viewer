@@ -23,23 +23,6 @@ A premium, localized tool to visualize and analyze your Facebook Messenger expor
 4. **Load Media (Optional)**: If you want to see photos/videos, select the parent folder containing your exports using the "Select Media Folder" button.
 5. **Explore**: Use the search bar, check your stats, and enjoy your memories!
 
-## 🛠️ Deployment (GitHub Pages)
-
-To host your own version of this tool for free on GitHub:
-
-1. Create a new repository on GitHub.
-2. Push these files to your repository:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit"
-   git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
-   git push -u origin main
-   ```
-3. Go to **Settings > Pages** in your GitHub repository.
-4. Under **Branch**, select `main` and click **Save**.
-5. Your app will be live at `https://YOUR_USERNAME.github.io/YOUR_REPO_NAME/`.
-
 ## 📜 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
